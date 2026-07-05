@@ -77,6 +77,8 @@ export {
   Statement,
   TreeView,
   TreeNode,
+  DomainStory,
+  DomainStorySentence,
   isInfo,
   isPacket,
   isPacketBlock,
@@ -97,6 +99,8 @@ export {
   EmModelEntityType,
   isEmModelEntityType,
   isEmResetFrame,
+  isDomainStory,
+  isDomainStorySentence,
 } from './generated/ast.js';
 
 export {
@@ -116,6 +120,7 @@ export {
   TreeViewGrammarGeneratedModule as TreeViewGeneratedModule,
   WardleyGrammarGeneratedModule as WardleyGeneratedModule,
   CynefinGrammarGeneratedModule as CynefinGeneratedModule,
+  DomainStoryGrammarGeneratedModule as DomainStoryGeneratedModule,
 } from './generated/module.js';
 
 export * from './gitGraph/index.js';
@@ -134,3 +139,4 @@ export * from './railroad-peg/index.js';
 export * from './treemap/index.js';
 export * from './wardley/index.js';
 export * from './cynefin/index.js';
+export * from './domainstorytelling/index.js';

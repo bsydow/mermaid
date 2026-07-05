@@ -11,6 +11,8 @@ cynefin
 deaccelerator
 Deaccelerator
 deaccelerators
+domainstory
+domainstorytelling
 doublecircle
 elem
 elems
@@ -50,5 +52,7 @@ Viewbox
 viewports
 visio
 vitepress
+workobject
+workobjects
 xlink
 xychart

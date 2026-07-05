@@ -355,6 +355,8 @@ properties:
     $ref: '#/$defs/TreeViewDiagramConfig'
   radar:
     $ref: '#/$defs/RadarDiagramConfig'
+  domainstorytelling:
+    $ref: '#/$defs/DomainstorytellingDiagramConfig'
   venn:
     $ref: '#/$defs/VennDiagramConfig'
   wardley-beta:
@@ -2661,6 +2663,51 @@ $defs: # JSON Schema definition (maybe we should move these to a separate file)
         minimum: 0
         maximum: 1
         default: 0.17
+
+  DomainstorytellingDiagramConfig:
+    title: Domainstorytelling Diagram Config
+    allOf: [{ $ref: '#/$defs/BaseDiagramConfig' }]
+    description: The object containing configurations specific for domainstorytelling diagrams.
+    type: object
+    unevaluatedProperties: false
+    properties:
+      nodeSpacing:
+        description: Spacing between nodes on the same rank.
+        type: number
+        minimum: 0
+        default: 70
+      rankSpacing:
+        description: Spacing between ranks.
+        type: number
+        minimum: 0
+        default: 130
+      ranker:
+        description: Dagre ranker used for domainstorytelling layout.
+        type: string
+        enum:
+          - network-simplex
+          - tight-tree
+          - longest-path
+        default: network-simplex
+      rankdir:
+        description: Diagram direction for domainstorytelling layout.
+        type: string
+        enum:
+          - TB
+          - BT
+          - LR
+          - RL
+        default: LR
+      acyclicer:
+        description: Optional dagre acyclicer strategy.
+        type: string
+        enum:
+          - greedy
+      diagramPadding:
+        description: Padding around the diagram (in pixels).
+        type: number
+        minimum: 0
+        default: 8
 
   VennDiagramConfig:
     title: Venn Diagram Config

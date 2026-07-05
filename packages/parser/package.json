@@ -8,12 +8,12 @@
     "Sidharth Vinod (https://sidharth.dev)"
   ],
   "homepage": "https://github.com/mermaid-js/mermaid/tree/develop/packages/mermaid/parser/#readme",
-  "types": "dist/src/index.d.ts",
+  "types": "src/index.ts",
   "type": "module",
   "exports": {
     ".": {
       "import": "./dist/mermaid-parser.core.mjs",
-      "types": "./dist/src/index.d.ts"
+      "types": "./src/index.ts"
     }
   },
   "scripts": {

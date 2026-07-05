@@ -1,6 +1,31 @@
 import { configKeys } from '../defaultConfig.js';
 import { log } from '../logger.js';
 
+const domainstorytellingDirectiveKeys = new Set([
+  'nodeSpacing',
+  'rankSpacing',
+  'acyclicer',
+  'ranker',
+  'rankdir',
+]);
+
+const sanitizeDomainstorytellingDirective = (value: unknown) => {
+  if (typeof value !== 'object' || value == null || Array.isArray(value)) {
+    return undefined;
+  }
+
+  const raw = value as Record<string, unknown>;
+  const sanitized: Record<string, unknown> = {};
+  for (const [k, v] of Object.entries(raw)) {
+    if (!domainstorytellingDirectiveKeys.has(k) || v == null) {
+      continue;
+    }
+    sanitized[k] = v;
+  }
+
+  return sanitized;
+};
+
 /**
  * Dictionary-style configs have arbitrary user-defined keys, so instead of
  * checking the keys against configKeys, their values are validated against a
@@ -52,6 +77,17 @@ export const sanitizeDirective = (args: any): void => {
   // Sanitize each key if an object
   for (const key of Object.keys(args)) {
     log.debug('Checking key', key);
+
+    if (key === 'domainstorytelling') {
+      const sanitizedDomainstorytelling = sanitizeDomainstorytellingDirective(args[key]);
+      if (sanitizedDomainstorytelling && Object.keys(sanitizedDomainstorytelling).length > 0) {
+        args[key] = sanitizedDomainstorytelling;
+      } else {
+        delete args[key];
+      }
+      continue;
+    }
+
     if (
       key.startsWith('__') ||
       key.includes('proto') ||

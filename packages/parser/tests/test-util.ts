@@ -17,6 +17,8 @@ import type {
   EventModelingServices,
   TreeView,
   TreeViewServices,
+  DomainStory,
+  DomainStoryServices,
 } from '../src/language/index.js';
 import {
   createArchitectureServices,
@@ -27,6 +29,7 @@ import {
   createGitGraphServices,
   createEventModelingServices,
   createTreeViewServices,
+  createDomainStoryServices,
 } from '../src/language/index.js';
 
 const consoleMock = vi.spyOn(console, 'log').mockImplementation(() => undefined);
@@ -133,3 +136,13 @@ export function createTreeViewTestServices() {
   return { services: treeViewServices, parse };
 }
 export const treeViewParse = createTreeViewTestServices().parse;
+
+const domainstorytellingServices: DomainStoryServices = createDomainStoryServices().DomainStory;
+const domainstorytellingParser: LangiumParser = domainstorytellingServices.parser.LangiumParser;
+export function createDomainStoryTestServices() {
+  const parse = (input: string) => {
+    return domainstorytellingParser.parse<DomainStory>(input);
+  };
+  return { services: domainstorytellingServices, parse };
+}
+export const domainstorytellingParse = createDomainStoryTestServices().parse;

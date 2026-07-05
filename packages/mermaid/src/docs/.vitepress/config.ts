@@ -196,6 +196,7 @@ function sidebarSyntax() {
         { text: 'Wardley 🔥', link: '/syntax/wardley' },
         { text: 'Cynefin 🔥', link: '/syntax/cynefin' },
         { text: 'TreeView 🔥', link: '/syntax/treeView' },
+        { text: 'Domain Storytelling 🔥', link: '/syntax/domainstorytelling' },
         { text: 'Other Examples', link: '/syntax/examples' },
       ],
     },

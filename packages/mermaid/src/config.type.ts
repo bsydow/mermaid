@@ -256,6 +256,7 @@ export interface MermaidConfig {
   eventmodeling?: EventModelingDiagramConfig;
   treeView?: TreeViewDiagramConfig;
   radar?: RadarDiagramConfig;
+  domainstorytelling?: DomainstorytellingDiagramConfig;
   venn?: VennDiagramConfig;
   'wardley-beta'?: WardleyDiagramConfig;
   cynefin?: CynefinDiagramConfig;
@@ -1924,6 +1925,38 @@ export interface RadarDiagramConfig extends BaseDiagramConfig {
    * The tension factor for the Catmull-Rom spline conversion to cubic Bézier curves.
    */
   curveTension?: number;
+}
+/**
+ * The object containing configurations specific for domainstorytelling diagrams.
+ *
+ * This interface was referenced by `MermaidConfig`'s JSON-Schema
+ * via the `definition` "DomainstorytellingDiagramConfig".
+ */
+export interface DomainstorytellingDiagramConfig extends BaseDiagramConfig {
+  /**
+   * Spacing between nodes on the same rank.
+   */
+  nodeSpacing?: number;
+  /**
+   * Spacing between ranks.
+   */
+  rankSpacing?: number;
+  /**
+   * Dagre ranker used for domainstorytelling layout.
+   */
+  ranker?: 'network-simplex' | 'tight-tree' | 'longest-path';
+  /**
+   * Diagram direction for domainstorytelling layout.
+   */
+  rankdir?: 'TB' | 'BT' | 'LR' | 'RL';
+  /**
+   * Optional dagre acyclicer strategy.
+   */
+  acyclicer?: 'greedy';
+  /**
+   * Padding around the diagram (in pixels).
+   */
+  diagramPadding?: number;
 }
 /**
  * The object containing configurations specific for Venn diagrams.
